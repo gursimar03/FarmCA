@@ -1,5 +1,5 @@
 package FarmCA;
 
-public class MilkingMachine {
-    
+public interface MilkingMachine {
+
 }
