@@ -8,7 +8,7 @@ public class MilkTank {
     final double MAX_CAPACITY = 2000;
 
     public MilkTank() {
-        this.id = (int)(Math.random() * 1000);
+        this.id = (int) (Math.random() * 1000);
         this.capacity = MAX_CAPACITY;
     }
 
@@ -33,22 +33,21 @@ public class MilkTank {
         return capacity;
     }
 
-    public void freeSpace(){
+    public void freeSpace() {
         this.capacity = 0;
     }
 
-    public void addToTank(double milk){
+    public void addToTank(double milk) {
         this.capacity += milk;
     }
 
-    public void getFromTank(double milk){
+    public void getFromTank(double milk) {
         this.capacity -= milk;
     }
-    
+
     @Override
     public String toString() {
         return "MilkTank{" + "id=" + id + ", capacity=" + capacity + '}';
     }
-
 
 }

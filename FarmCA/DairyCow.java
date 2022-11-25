@@ -1,6 +1,6 @@
 package FarmCA;
 
-public class DairyCow {
+public class DairyCow extends Animals implements Milkable {
 
     private int id;
     private String name;
@@ -8,18 +8,16 @@ public class DairyCow {
 
     public DairyCow() {
 
-        String randomName = "Cow" + (int)(Math.random() * 1000);
+        String randomName = "Cow" + (int) (Math.random() * 1000);
 
         this.name = randomName;
-        this.id = (int)(Math.random() * 1000);
+        this.id = (int) (Math.random() * 1000);
         this.udder = randomUdder();
     }
 
- 
-
-    public DairyCow(String name){
+    public DairyCow(String name) {
         this.name = name;
-        this.id = (int)(Math.random() * 1000);
+        this.id = (int) (Math.random() * 1000);
         this.udder = randomUdder();
     }
 
@@ -52,11 +50,16 @@ public class DairyCow {
         return "Cow{" + "id=" + id + ", name=" + name + ", udder=" + udder + '}';
     }
 
+    public double randomUdder() {
 
-    public double randomUdder(){
-     
-        double udderSize = (Math.random() * 20) + 20;        
+        double udderSize = (Math.random() * 20) + 20;
         return udderSize;
     }
-    
+
+    @Override
+    public void milk() {
+        // TODO Auto-generated method stub
+
+    }
+
 }
