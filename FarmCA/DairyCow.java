@@ -2,24 +2,14 @@ package FarmCA;
 
 public class DairyCow extends Animal implements Milkable {
 
-    private int milkProduction;
+    String name;
+    int id;
+    double udder;
 
-    public DairyCow(int id, String name, int milkProduction) {
+    public DairyCow(int id, String name, double udder) {
         super(id, name);
-        this.milkProduction = milkProduction;
-    }
 
-    public int getMilkProduction() {
-        return milkProduction;
-    }
-
-    @Override
-    public String toString() {
-        return "DairyCow{" +
-                "milkProduction=" + milkProduction +
-                ", id=" + getId() +
-                ", name='" + getName() + '\'' +
-                '}';
+        this.udder = udder;
     }
 
 }

@@ -6,7 +6,7 @@ public class TestApp {
 
     public static void main(String[] args) {
 
-        DairyCow a = new DairyCow(0, null, 0);
+        DairyCow a = new DairyCow(1, "Bessie", 20.0);
 
         ArrayList<Animal> cows = new ArrayList<>();
 
