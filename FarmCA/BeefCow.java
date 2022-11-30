@@ -1,10 +1,10 @@
 package FarmCA;
 
-public class DairyCow extends Animal implements Milkable {
+public class BeefCow extends Animal {
 
     private int milkProduction;
 
-    public DairyCow(int id, String name, int milkProduction) {
+    public BeefCow(int id, String name, int milkProduction) {
         super(id, name);
         this.milkProduction = milkProduction;
     }
@@ -15,7 +15,7 @@ public class DairyCow extends Animal implements Milkable {
 
     @Override
     public String toString() {
-        return "DairyCow{" +
+        return "BeefCow{" +
                 "milkProduction=" + milkProduction +
                 ", id=" + getId() +
                 ", name='" + getName() + '\'' +
