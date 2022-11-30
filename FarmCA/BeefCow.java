@@ -4,9 +4,8 @@ public class BeefCow extends Animal {
 
     private int milkProduction;
 
-    public BeefCow(int id, String name, int milkProduction) {
+    public BeefCow(int id, String name) {
         super(id, name);
-        this.milkProduction = milkProduction;
     }
 
     public int getMilkProduction() {
@@ -16,10 +15,7 @@ public class BeefCow extends Animal {
     @Override
     public String toString() {
         return "BeefCow{" +
-                "milkProduction=" + milkProduction +
                 ", id=" + getId() +
-                ", name='" + getName() + '\'' +
                 '}';
     }
-
 }
