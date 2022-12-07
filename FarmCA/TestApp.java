@@ -6,7 +6,7 @@ public class TestApp {
 
     public static void main(String[] args) {
 
-        DairyCow a = new DairyCow(1, "Bessie", 20.0);
+        DairyCow a = new DairyCow();
 
         ArrayList<Animal> cows = new ArrayList<>();
 
@@ -14,7 +14,7 @@ public class TestApp {
 
         Shed b = new Shed(cows);
 
-        Farm c = new Farm(b);
+        Farm c = new Farm(1,"myname",b);
 
         System.out.println(c);
 

@@ -13,9 +13,11 @@ public class DairyCow extends Animal implements Milkable {
         this.udder = (Math.random() * 20) + 20;
     }
 
-    public Cow(String name) {
-
+    public DairyCow(String name) {
+        
+        //generate random name
         super(name);
+
         //udder capacity between 20 to 40 random
         this.udder = (Math.random() * 20) + 20;
     }

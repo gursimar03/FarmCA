@@ -6,7 +6,7 @@ public class Goat extends Animal implements Milkable {
     private double udder;
 
     public Goat(int id, String name) {
-        super(id, name);
+        super(name);
     }
 
     @Override

@@ -4,7 +4,7 @@ public class BeefCow extends Animal {
 
 
     public BeefCow(int id, String name) {
-        super(id, name);
+        super(name);
     }
 
     @Override

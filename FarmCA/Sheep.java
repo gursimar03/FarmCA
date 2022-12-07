@@ -3,7 +3,7 @@ package FarmCA;
 public class Sheep extends Animal {
 
     public Sheep(int id, String name) {
-        super(id, name);
+        super(name);
 
     }
 

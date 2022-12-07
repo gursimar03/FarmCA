@@ -4,12 +4,15 @@ public class Farm {
 
     private int farmID;
     private String OwnerName;
+    private Shed shed;
 
-    Shed shed = new Shed();
-
-    public Farm(int farmID, String OwnerName) {
+    public Farm(int farmID, String OwnerName , Shed shed) {
         this.farmID = farmID;
         this.OwnerName = OwnerName;
+        this.shed = shed;
+    }
+
+    public Farm(Shed b) {
     }
 
     public int getFarmID() {
@@ -37,5 +40,14 @@ public class Farm {
         System.out.println("Owner Name: " + OwnerName);
         System.out.println("Shed Details: ");
         shed.printShedDetails();
+    }
+
+    @Override
+    public String toString() {
+        return "Farm{" +
+                "farmID=" + farmID +
+                ", OwnerName='" + OwnerName + '\'' +
+                ", shed=" + shed +
+                '}';
     }
 }

@@ -2,11 +2,11 @@ package FarmCA;
 
 public class MilkTank {
 
-    final double MAX_CAPACITY = 2000;
+    double MAX_CAPACITY = 2000;
     private double currentCapacity = 0;
 
     public MilkTank(){
-        this.MAX_CAPACITY = MAX_CAPACITY;
+        
     }
 
     public MilkTank(int customCapacity){

@@ -5,8 +5,8 @@ import java.util.UUID;
 
 public abstract class Animal {
 
-    private int id;
-    private String name;
+    private String id;
+    protected String name;
 
     public Animal(String name) {
         
@@ -15,7 +15,7 @@ public abstract class Animal {
         this.name = name;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
