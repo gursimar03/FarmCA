@@ -14,6 +14,10 @@ public class TestApp {
 
         Shed b = new Shed(cows);
 
+        Farm c = new Farm(b);
+
+        System.out.println(c);
+
     }
 
 }
