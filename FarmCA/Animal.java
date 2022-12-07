@@ -1,12 +1,17 @@
 package FarmCA;
 
+import java.util.UUID;
+
+
 public abstract class Animal {
 
     private int id;
     private String name;
 
-    public Animal(int id, String name) {
-        this.id = id;
+    public Animal(String name) {
+        
+        this.id = UUID.randomUUID().toString();
+
         this.name = name;
     }
 
@@ -17,5 +22,12 @@ public abstract class Animal {
     public String getName() {
         return name;
     }
+
+   @Override
+    public String toString() {
+        return "Animal{" + "id=" + id + ", name=" + name + '}';
+    }
+
+
 
 }

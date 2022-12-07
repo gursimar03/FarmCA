@@ -2,14 +2,20 @@ package FarmCA;
 
 public class DairyCow extends Animal implements Milkable {
 
-    String name;
-    int id;
+    private String name;
     double udder;
 
-    public DairyCow(int id, String name, double udder) {
-        super(id, name);
+    public DairyCow(String name) {
 
-        this.udder = udder;
+        
+
+        super(name);
+        //udder capacity between 20 to 40 random
+        this.udder = (Math.random() * 20) + 20;
+    }
+
+    public double getUdder() {
+        return udder;
     }
 
 }
