@@ -12,6 +12,10 @@ public class TestApp {
 
         cows.add(a);
 
+        DairyCow a2 = new DairyCow();
+
+        cows.add(a2);
+
         Shed b = new Shed(cows);
 
         Farm c = new Farm(1,"myname",b);
