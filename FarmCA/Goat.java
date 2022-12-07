@@ -5,9 +5,28 @@ public class Goat extends Animal implements Milkable {
 
     private double udder;
 
-    public Goat(int id, String name) {
+    public Goat(String name) {
         super(name);
+        //generate a random udder size between 2 to 4
+        this.udder = 2 + (Math.random() * 2);
     }
+
+    @Override
+    public String getId() {
+        
+        return super.getId();
+    }
+
+    @Override
+    public String getName() {
+    
+        return super.getName();
+    }
+
+    public double getUdder() {
+        return udder;
+    }
+
 
     @Override
     public String toString() {
