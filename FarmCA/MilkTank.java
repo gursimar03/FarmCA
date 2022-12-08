@@ -4,7 +4,7 @@ public class MilkTank {
 
     double MAX_CAPACITY = 2000;
     private double currentCapacity = 0;
-
+    
     public MilkTank(){
         
     }
@@ -48,6 +48,7 @@ public class MilkTank {
     }
 
     public boolean addToTank(Animal animal) {
+
         if (animal instanceof Milkable){
             if (freeSpace() >= ((Milkable) animal).produceMilk()){
                 addToTank(((Milkable) animal).produceMilk());

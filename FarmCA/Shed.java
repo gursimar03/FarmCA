@@ -71,9 +71,14 @@ public class Shed {
         }
     }
 
-    public void installMilkTank(MilkTank tank) {
-        milkingMachine.setMilkTank(tank);
+    public void installTankForCow(MilkTank tank){
+        milkingMachine.setCowMilk(tank);
     }
+
+    public void installTankForGoat(MilkTank tank){
+        milkingMachine.setGoatMilk(tank);
+    }
+    
 
     public void milkAnimals() {
         for (Animal animal : herd) {

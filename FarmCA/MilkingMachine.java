@@ -2,34 +2,33 @@ package FarmCA;
 
 public class MilkingMachine {
 
-    private MilkTank tank;
+    private MilkTank cowMilk;
+    private MilkTank goatMilk;
     private String name;
-    //created an attribute to store the amount of times we want to milk the animal
-//    private int times;
-
-//    returns the connected milk tank or null if the tank isn’t installed
+  
     public MilkingMachine(){
 
     }
+    
     public MilkingMachine(String name){
         this.name = name;
     }
 
-    public MilkingMachine(MilkTank tank){
-        this.tank = tank;
+    
+    public void setCowMilk(MilkTank cowMilk) {
+        this.cowMilk = cowMilk;
+    }
+    
+    public void setGoatMilk(MilkTank goatMilk) {
+        this.goatMilk = goatMilk;
     }
 
-    public MilkingMachine(String name,MilkTank tank){
-        this.name = name;
-        this.tank = tank;
+    public MilkTank getCowMilkTank() {
+        return cowMilk;
     }
 
-    public MilkTank getMilkTank() {
-        return tank;
-    }
-
-    public void setMilkTank(MilkTank tank) {
-        this.tank = tank;
+    public MilkTank getGoatMilkTank() {
+        return goatMilk;
     }
 
     public String getName() {
@@ -40,16 +39,33 @@ public class MilkingMachine {
         this.name = name;
     }
 
+
+
     public void milk(Milkable animal){
-            if(this.getMilkTank() != null){
+
+        if(animal instanceof DairyCow){
+            if(this.getCowMilkTank() != null){
                 double amount = animal.produceMilk();
-                this.tank.addToTank(amount);
+                this.cowMilk.addToTank(amount);
             }
             else{
                 throw new IllegalStateException("No tank has been installed");
             }
-
+        }
+        else if(animal instanceof Goat){
+            if(this.getGoatMilkTank() != null){
+                double amount = animal.produceMilk();
+                this.goatMilk.addToTank(amount);
+            }
+            else{
+                throw new IllegalStateException("No tank has been installed");
+            }
+        }
+        else{
+            throw new IllegalArgumentException("This animal cannot be milked");
+        }
     }
+    
 }
 
 
