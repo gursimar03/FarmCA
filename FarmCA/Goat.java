@@ -35,4 +35,8 @@ public class Goat extends Animal implements Milkable {
                 '}';
     }
 
+    public double produceMilk() {
+        return udder;
+    }
+
 }

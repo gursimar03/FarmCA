@@ -30,6 +30,10 @@ public class DairyCow extends Animal implements Milkable {
         return udder;
     }
 
+    public double produceMilk() {
+        return udder;
+    }
+
 
 
 }

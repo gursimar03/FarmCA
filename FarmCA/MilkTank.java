@@ -46,4 +46,14 @@ public class MilkTank {
                 ", currentCapacity=" + currentCapacity +
                 '}';
     }
+
+    public boolean addToTank(Animal animal) {
+        if (animal instanceof Milkable){
+            if (freeSpace() >= ((Milkable) animal).produceMilk()){
+                addToTank(((Milkable) animal).produceMilk());
+                return true;
+            }
+        }
+        return false;
+    }
 }
