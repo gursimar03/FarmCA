@@ -1,27 +1,35 @@
 package FarmCA;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Farm {
 
-    private int farmID;
+    private String farmID;
     private String OwnerName;
     private ArrayList<Shed> shedList;
 
-    public Farm(int farmID, String OwnerName , ArrayList<Shed> shed) {
+    public Farm(String farmID, String OwnerName , ArrayList<Shed> shed) {
         this.farmID = farmID;
         this.OwnerName = OwnerName;
         this.shedList = shed;
     }
 
+    public Farm(String OwnerName , ArrayList<Shed> shed) {
+        this.farmID = UUID.randomUUID().toString();
+        this.OwnerName = OwnerName;
+        this.shedList = shed;
+    }
+
+
     public Farm() {
     }
 
-    public int getFarmID() {
+    public String getFarmID() {
         return farmID;
     }
 
-    public void setFarmID(int farmID) {
+    public void setFarmID(String farmID) {
         this.farmID = farmID;
     }
 
@@ -31,6 +39,10 @@ public class Farm {
 
     public void setOwnerName(String OwnerName) {
         this.OwnerName = OwnerName;
+    }
+
+    public ArrayList<Shed> getShedList() {
+        return shedList;
     }
 
     public void addShed(Shed shed) {

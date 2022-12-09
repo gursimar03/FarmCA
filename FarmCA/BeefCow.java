@@ -7,6 +7,17 @@ public class BeefCow extends Animal {
         super(name);
     }
 
+    public BeefCow() {
+        
+        //generate random name
+        super("BeefCow " + (int)(Math.random() * 1000));
+
+    }
+
+    public BeefCow(String name) {
+        super(name);
+    }
+
     @Override
     public String toString() {
         return "BeefCow{" +

@@ -7,30 +7,48 @@ public class Shed {
 
     private ArrayList<Animal> herd;
     private MilkingMachine milkingMachine;
-    private UUID id;
+    private String id;
 
     public Shed(ArrayList<Animal> animal) {
         
-        this.id = UUID.randomUUID();
+        this.id = UUID.randomUUID().toString();
         this.herd = animal;
     }
 
+    public Shed() {
+        this.id = UUID.randomUUID().toString();
+        this.herd = new ArrayList<>();
+    }
+
+    public Shed(String id){
+        this.id = id;
+        this.herd = new ArrayList<>();
+    }
+
+    
+
+    public Shed(MilkingMachine milkingMachine, ArrayList<Animal> animal, String id) {
+        this.milkingMachine = milkingMachine;
+        this.herd = animal;
+        this.id = id;
+    }
+
     public Shed(MilkingMachine milkingMachine) {
-        this.id = UUID.randomUUID();
+        this.id = UUID.randomUUID().toString();
         this.milkingMachine = milkingMachine;
     }
 
     public Shed(MilkingMachine milkingMachine, ArrayList<Animal> animal) {
-        this.id = UUID.randomUUID();
+        this.id = UUID.randomUUID().toString();
         this.milkingMachine = milkingMachine;
         this.herd = animal;
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 

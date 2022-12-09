@@ -27,7 +27,7 @@ public class TestApp {
         Shed b = new Shed(goats);
         shed.add(b);
 
-        Farm c = new Farm(1,"myname",shed);
+        Farm c = new Farm("1","myname",shed);
 
         MilkingMachine m = new MilkingMachine();
 

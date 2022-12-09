@@ -1,2 +1,12 @@
-1 Gursimar 3
-4 
+Gursimar 2
+Shed1 2
+DairyCow 3
+Daisy xxx xxx
+Goat 4
+xxx xxx xxx xxx
+Shed2 2
+BeefCow 2
+xxx xxx
+Chicken 1
+xxx
+
