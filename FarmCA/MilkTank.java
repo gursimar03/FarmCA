@@ -42,8 +42,8 @@ public class MilkTank {
     @Override
     public String toString() {
         return "MilkTank{" +
-                "MAX_CAPACITY=" + MAX_CAPACITY +
-                ", currentCapacity=" + currentCapacity +
+                "\n MAX_CAPACITY=" + MAX_CAPACITY +
+                "\n currentCapacity=" + currentCapacity +
                 '}';
     }
 

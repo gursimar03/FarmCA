@@ -3,12 +3,12 @@ package FarmCA;
 public class Goat extends Animal implements Milkable {
 
 
-    private double udder;
+    private int udder;
 
     public Goat(String name) {
         super(name);
         //generate a random udder size between 2 to 4
-        this.udder = 2 + (Math.random() * 2);
+        this.udder = (int)(2 + (Math.random() * 2));
     }
 
     @Override

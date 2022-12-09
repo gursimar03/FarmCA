@@ -1,18 +1,20 @@
 package FarmCA;
 
+import java.util.ArrayList;
+
 public class Farm {
 
     private int farmID;
     private String OwnerName;
-    private Shed shed;
+    private ArrayList<Shed> shedList;
 
-    public Farm(int farmID, String OwnerName , Shed shed) {
+    public Farm(int farmID, String OwnerName , ArrayList<Shed> shed) {
         this.farmID = farmID;
         this.OwnerName = OwnerName;
-        this.shed = shed;
+        this.shedList = shed;
     }
 
-    public Farm(Shed b) {
+    public Farm() {
     }
 
     public int getFarmID() {
@@ -32,14 +34,16 @@ public class Farm {
     }
 
     public void addShed(Shed shed) {
-        this.shed = shed;
+        this.shedList.add(shed);
     }
 
     public void printFarmDetails() {
         System.out.println("Farm ID: " + farmID);
         System.out.println("Owner Name: " + OwnerName);
         System.out.println("Shed Details: ");
-        shed.printShedDetails();
+        for (Shed shed : shedList) {
+            shed.printShedDetails();
+        }
     }
 
     @Override
@@ -47,7 +51,7 @@ public class Farm {
         return "Farm{" +
                 "farmID=" + farmID +
                 ", OwnerName='" + OwnerName + '\'' +
-                ", shed=" + shed +
+                
                 '}';
     }
 }

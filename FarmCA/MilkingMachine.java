@@ -65,6 +65,15 @@ public class MilkingMachine {
             throw new IllegalArgumentException("This animal cannot be milked");
         }
     }
+
+    @Override
+    public String toString() {
+        return "MilkingMachine{" +
+                "\ncowMilk=" + cowMilk +
+                "\n goatMilk=" + goatMilk +
+                ", name='" + name + '\'' +
+                '}';
+    }
     
 }
 
