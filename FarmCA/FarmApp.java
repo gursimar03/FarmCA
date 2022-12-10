@@ -12,6 +12,7 @@ public class FarmApp {
         mainApp();
     }
 
+    // mainMenu to print the main menu
     public static void mainMenu() {
 
         System.out.println();
@@ -23,6 +24,7 @@ public class FarmApp {
         System.out.print("Please enter your choice: ");
     }
 
+    // farmMenu to print the farm menu so that we can use it multiple times
     public static void farmMenu() {
         System.out.println();
         System.out.println("*** Farm Menu ***");
@@ -42,23 +44,27 @@ public class FarmApp {
         System.out.print("Please enter your choice: ");
     }
 
+    // Method to get the choice from the user and return index of the
     public static int printShedDetails(ArrayList<Shed> shedList) {
 
         System.out.println("*** Shed Details ***");
         for (int i = 0; i < shedList.size(); i++) {
             System.out.println((i + 1) + ". " + shedList.get(i).getId());
         }
+
         Scanner sc = new Scanner(System.in);
 
         int choice = 0;
+        System.out.print("Please enter your choice: ");
         while (choice < 1 || choice > shedList.size()) {
-            System.out.print("Please enter your choice: ");
             choice = sc.nextInt();
         }
 
+        // return the index of the shed
         return choice - 1;
     }
 
+    // Method to get the choice from the user and return index of the
     public static int printAllAnimals(ArrayList<Animal> animalList) {
 
         System.out.println("*** Animal Details ***");
@@ -68,8 +74,8 @@ public class FarmApp {
         Scanner sc = new Scanner(System.in);
 
         int choice = 0;
+        System.out.print("Please enter your choice: ");
         while (choice < 1 || choice > animalList.size()) {
-            System.out.print("Please enter your choice: ");
             choice = sc.nextInt();
         }
 
@@ -77,73 +83,112 @@ public class FarmApp {
     }
 
     public static void mainApp() throws FileNotFoundException {
+
+        // Clear the screen
         System.out.print("\033[H\033[2J");
         System.out.flush();
 
-        mainMenu();
+        String choice = "";
         Scanner sc = new Scanner(System.in);
-        String choice = sc.nextLine();
+
+        while (true) {
+
+            mainMenu();
+            choice = sc.nextLine();
+
+            if (choice.equals("1") || choice.equals("2") || choice.equals("3")) {
+                break;
+            } else if (choice.equals("Q") || choice.equals("q")) {
+                System.exit(0);
+            }
+        }
+
+        // Creates a farm object which is returned from choices method
         Farm farm = choices(choice);
 
         if (farm != null) {
 
             while (true) {
+
                 farmMenu();
                 String farmChoice = sc.next();
+
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
-                int shedIndex;
 
+                int shedIndex;
                 switch (farmChoice) {
+
                     case "1":
+                        // Add a shed
                         System.out.println("*** Add a Shed ***");
                         System.out.print("Please enter the shed name: ");
                         String shedName = sc.next();
                         farm.addShed(new Shed(shedName));
                         break;
+
                     case "2":
+                        // Add an animal to a shed
                         System.out.println("*** Add an Animal to a Shed ***");
                         System.out.println("--- Animal Types ---");
                         System.out.println("1. Dairy Cow");
                         System.out.println("2. Goat");
                         System.out.println("3. Sheep");
                         System.out.println("4. Beef Cow");
+
+                        System.out.print("Please enter the animal type: ");
                         String animalType = sc.next();
+
+                        // Get the index of the shed
                         shedIndex = printShedDetails(farm.getShedList());
+
                         switch (animalType) {
                             case "1":
+
                                 System.out.print("Please enter the number of Dairy Cows: ");
                                 int numberOfDairyCows = sc.nextInt();
+
                                 for (int i = 0; i < numberOfDairyCows; i++) {
                                     farm.getShedList().get(shedIndex).addAnimal(new DairyCow());
                                 }
+
                                 break;
+
                             case "2":
+
                                 System.out.print("Please enter the number of Goats: ");
                                 int numberOfGoats = sc.nextInt();
                                 for (int i = 0; i < numberOfGoats; i++) {
                                     farm.getShedList().get(shedIndex).addAnimal(new Goat());
                                 }
+
                                 break;
+
                             case "3":
+
                                 System.out.print("Please enter the number of Sheep: ");
                                 int numberOfSheep = sc.nextInt();
                                 for (int i = 0; i < numberOfSheep; i++) {
                                     farm.getShedList().get(shedIndex).addAnimal(new Sheep());
                                 }
+
                                 break;
+
                             case "4":
+
                                 System.out.print("Please enter the number of Beef Cows: ");
                                 int numberOfBeefCows = sc.nextInt();
                                 for (int i = 0; i < numberOfBeefCows; i++) {
                                     farm.getShedList().get(shedIndex).addAnimal(new BeefCow());
                                 }
                                 break;
+
                             default:
                                 System.out.println("Invalid choice");
                                 break;
                         }
                         break;
+
                     case "3":
                         System.out.println("*** Print/Edit Farm Details ***");
                         farm.printFarmDetails();
@@ -174,7 +219,9 @@ public class FarmApp {
                                 break;
                         }
                         break;
+
                     case "4":
+
                         System.out.println("*** Print/Edit Shed Details ***");
                         shedIndex = printShedDetails(farm.getShedList());
                         farm.getShedList().get(shedIndex).printShedDetails();
@@ -199,6 +246,7 @@ public class FarmApp {
                                 break;
                         }
                         break;
+
                     case "5":
                         System.out.println("*** Print/Edit Animal Details ***");
                         shedIndex = printShedDetails(farm.getShedList());
@@ -233,6 +281,7 @@ public class FarmApp {
 
                         }
                         break;
+
                     case "6":
                         System.out.println("*** Farm Details ***");
                         System.out.println(farm);
@@ -272,14 +321,11 @@ public class FarmApp {
                                                     + animal.getClass().getSimpleName());
                                         }
                                     }
-
                                 }
-
                             } else {
                                 System.out.println(">>> No Milking Machine Needed " + shed.getId());
                             }
                         }
-
                         break;
 
                     case "8":
@@ -294,27 +340,33 @@ public class FarmApp {
                                 System.out.println("    >>> No Milking Machine in " + shed.getId());
                             }
                         }
-
                         System.out.println("Milking Complete");
 
                         break;
 
                     case "9":
+
                         System.out.println("*** Tank Status ***\n");
                         ArrayList<Shed> shedList3 = farm.getShedList();
 
                         for (Shed shed : shedList3) {
                             shed.printMilkingMachineDetails();
                         }
+
                         break;
+
                     case "10":
+
                         System.out.println("*** Report A Dead Animal ***");
                         shedIndex = printShedDetails(farm.getShedList());
                         index = printAllAnimals(farm.getShedList().get(shedIndex).getHerd());
                         farm.getShedList().get(shedIndex).getHerd().remove(index);
                         System.out.println("Animal removed");
+
                         break;
+
                     case "11":
+
                         System.out.println("*** Regular Milk Collection ***");
                         ArrayList<Shed> shedList4 = farm.getShedList();
                         for (Shed shed : shedList4) {
@@ -327,6 +379,8 @@ public class FarmApp {
                             }
                         }
 
+                        break;
+
                     case "12":
                         System.out.println("*** Export Data to file ***");
                         System.out.println("1. Export to default file");
@@ -334,7 +388,7 @@ public class FarmApp {
                         String exportChoice = sc.next();
                         switch (exportChoice) {
                             case "1":
-                                saveDataInFile(farm,"FarmCA/savedDetails.txt");
+                                saveDataInFile(farm, "FarmCA/savedDetails.txt");
                                 break;
                             case "2":
                                 System.out.print("Please enter the file path: ");
@@ -348,9 +402,14 @@ public class FarmApp {
                         }
                         break;
 
+                    case "q":
+                        System.out.println("Thank you for using Farm App");
+                        saveDataInFile(farm, "FarmCA/savedDetails.txt");
+                        System.exit(0);
+                        break;
                     case "Q":
                         System.out.println("Thank you for using Farm App");
-                        saveDataInFile(farm,"FarmCA/savedDetails.txt");
+                        saveDataInFile(farm, "FarmCA/savedDetails.txt");
                         System.exit(0);
                         break;
                     default:
@@ -362,25 +421,34 @@ public class FarmApp {
         }
     }
 
+
+    //Method to return farm object through choice of user
     public static Farm choices(String choice) throws FileNotFoundException {
+
         Farm farm = null;
+        
         switch (choice) {
+            
             case "1":
                 farm = fileReader("FarmCA/defaultFarmSetup.txt");
                 break;
+            
             case "2":
                 System.out.print("Please enter the file path: ");
                 Scanner sc = new Scanner(System.in);
                 String path = sc.nextLine();
                 farm = fileReader(path);
                 break;
+        
             case "3":
                 farm = manualAddFarm();
                 break;
+    
             case "Q":
                 System.out.println("Thank you for using Farm App");
                 System.exit(0);
                 break;
+            
             default:
                 System.out.println("Invalid choice");
                 break;
@@ -389,23 +457,31 @@ public class FarmApp {
     }
 
     public static Farm manualAddFarm() {
+    
+        //Manual add farm
         System.out.println("*** Manually add a Farm ***");
         Scanner sc = new Scanner(System.in);
+
         System.out.print("Please enter the farm name: ");
         String farmName = sc.nextLine();
         System.out.print("Please enter the owner name: ");
         String ownerName = sc.nextLine();
         System.out.print("Please enter the number of sheds: ");
         int numberOfSheds = sc.nextInt();
+
         ArrayList<Shed> shedList = new ArrayList<>();
         Farm farm = new Farm(farmName, ownerName, shedList);
+        
         if (numberOfSheds > 0) {
+
             for (int i = 0; i < numberOfSheds; i++) {
+            
                 System.out.print("Please enter the shed name: ");
                 String shedName = sc.next();
                 shedList.add(new Shed(shedName));
                 System.out.print("Please enter the number of animals: ");
                 int numberOfAnimals = sc.nextInt();
+            
                 for (int j = 0; j < numberOfAnimals; j++) {
 
                     System.out.println("*** Animal Types ***");
@@ -417,8 +493,10 @@ public class FarmApp {
 
                     switch (animalType) {
                         case "1":
+            
                             System.out.print("Please enter the number of Dairy Cows: ");
                             int numberOfDairyCows = sc.nextInt();
+                
                             for (int k = 0; k < numberOfDairyCows; k++) {
                                 System.out.print("Please enter the name of the Dairy Cow: ");
                                 String name = sc.next();
@@ -426,9 +504,12 @@ public class FarmApp {
                                 shedList.get(i).addAnimal(dairyCow);
                             }
                             break;
+                        
                         case "2":
+                            
                             System.out.print("Please enter the number of Goats: ");
                             int numberOfGoats = sc.nextInt();
+                            
                             for (int k = 0; k < numberOfGoats; k++) {
                                 System.out.print("Please enter the name of the Goat: ");
                                 String name = sc.next();
@@ -436,9 +517,12 @@ public class FarmApp {
                                 shedList.get(i).addAnimal(goat);
                             }
                             break;
+
                         case "3":
+
                             System.out.print("Please enter the number of Sheep: ");
                             int numberOfSheep = sc.nextInt();
+                            
                             for (int k = 0; k < numberOfSheep; k++) {
                                 System.out.print("Please enter the name of the Sheep: ");
                                 String name = sc.next();
@@ -446,6 +530,7 @@ public class FarmApp {
                                 shedList.get(i).addAnimal(sheep);
                             }
                             break;
+
                         default:
                             System.out.println("Invalid choice");
                             break;
@@ -459,99 +544,104 @@ public class FarmApp {
     }
 
     public static Farm fileReader(String path) throws FileNotFoundException {
+        
         System.out.println("*** Auto Fill Farm using default file ***");
 
         try {
+
             File file = new File(path);
-            try (Scanner sc = new Scanner(file)) {
-                boolean flag = true;
-                while (sc.hasNextLine() && flag) {
+            Scanner sc = new Scanner(file);
 
-                    String cursor = sc.next();
-                    int numberOfSheds = sc.nextInt();
-                    ArrayList<Shed> shedList = new ArrayList<>();
-                    Farm farm = new Farm(cursor, shedList);
+            
+            while (sc.hasNext()) {
 
-                    for (int j = 0; j < numberOfSheds; j++) {
-                        shedList.add(new Shed(sc.next()));
-                        int numberofAnimals = sc.nextInt();
-                        for (int i = 0; i < numberofAnimals; i++) {
+                String farmName = sc.next();
+                int numberOfSheds = sc.nextInt();
+                ArrayList<Shed> shedList = new ArrayList<>();
+                
+                Farm farm = new Farm(farmName, shedList);
 
-                            String animalType = sc.next();
-                            if (animalType.equals("DairyCow")) {
+                for (int j = 0; j < numberOfSheds; j++) {
+                    
+                    shedList.add(new Shed(sc.next()));
+                    int numberofAnimals = sc.nextInt();
+                    
+                    for (int i = 0; i < numberofAnimals; i++) {
+                        String animalType = sc.next();
+                        
+                        if (animalType.equals("DairyCow")) {
+                            int numbers = sc.nextInt();
 
-                                int numbers = sc.nextInt();
-
-                                for (int k = 0; k < numbers; k++) {
-                                    String name = sc.next();
-                                    if (name.equals("xxx")) {
-                                        DairyCow a = new DairyCow();
-                                        shedList.get(j).addAnimal(a);
-                                    } else {
-                                        DairyCow a = new DairyCow(name);
-                                        shedList.get(j).addAnimal(a);
-                                    }
+                            for (int k = 0; k < numbers; k++) {
+                             
+                                String name = sc.next();
+                             
+                                if (name.equals("xxx")) {
+                                    DairyCow a = new DairyCow();
+                                    shedList.get(j).addAnimal(a);
+                                } else {
+                                    DairyCow a = new DairyCow(name);
+                                    shedList.get(j).addAnimal(a);
                                 }
+                            }
+                        } else if (animalType.equals("Goat")) {
 
-                            } else if (animalType.equals("Goat")) {
+                            int numbers = sc.nextInt();
 
-                                int numbers = sc.nextInt();
-
-                                for (int k = 0; k < numbers; k++) {
-                                    String name = sc.next();
-                                    if (name.equals("xxx")) {
-                                        Goat a = new Goat();
-                                        shedList.get(j).addAnimal(a);
-                                    } else {
-                                        Goat a = new Goat(name);
-                                        shedList.get(j).addAnimal(a);
-                                    }
+                            for (int k = 0; k < numbers; k++) {
+                            
+                                String name = sc.next();
+                                if (name.equals("xxx")) {
+                                    Goat a = new Goat();
+                                    shedList.get(j).addAnimal(a);
+                                } else {
+                                    Goat a = new Goat(name);
+                                    shedList.get(j).addAnimal(a);
                                 }
+                            }
 
-                            } else if (animalType.equals("Sheep")) {
+                        } else if (animalType.equals("Sheep")) {
 
-                                int numbers = sc.nextInt();
+                            int numbers = sc.nextInt();
 
-                                for (int k = 0; k < numbers; k++) {
-                                    String name = sc.next();
-                                    if (name.equals("xxx")) {
-                                        Sheep a = new Sheep();
-                                        shedList.get(j).addAnimal(a);
-                                    } else {
-                                        Sheep a = new Sheep(name);
-                                        shedList.get(j).addAnimal(a);
-                                    }
+                            for (int k = 0; k < numbers; k++) {
+                                String name = sc.next();
+                                if (name.equals("xxx")) {
+                                    Sheep a = new Sheep();
+                                    shedList.get(j).addAnimal(a);
+                                } else {
+                                    Sheep a = new Sheep(name);
+                                    shedList.get(j).addAnimal(a);
                                 }
-                            } else if (animalType.equals("BeefCow")) {
-                                int numbers = sc.nextInt();
+                            }
+                        } else if (animalType.equals("BeefCow")) {
+                            int numbers = sc.nextInt();
 
-                                for (int k = 0; k < numbers; k++) {
-                                    String name = sc.next();
-                                    if (name.equals("xxx")) {
-                                        BeefCow a = new BeefCow();
-                                        shedList.get(j).addAnimal(a);
-                                    } else {
-                                        BeefCow a = new BeefCow(name);
-                                        shedList.get(j).addAnimal(a);
-                                    }
+                            for (int k = 0; k < numbers; k++) {
+                                String name = sc.next();
+                                if (name.equals("xxx")) {
+                                    BeefCow a = new BeefCow();
+                                    shedList.get(j).addAnimal(a);
+                                } else {
+                                    BeefCow a = new BeefCow(name);
+                                    shedList.get(j).addAnimal(a);
                                 }
-                            } else {
-                                System.out.println("Invalid Animal Type");
-                                int numbers = sc.nextInt();
+                            }
+                        } else {
+                            System.out.println("Invalid Animal Type");
+                            int numbers = sc.nextInt();
 
-                                for (int k = 0; k < numbers; k++) {
-                                    sc.next();
-                                }
+                            for (int k = 0; k < numbers; k++) {
+                                sc.next();
                             }
                         }
                     }
-
-                    return farm;
                 }
 
+                return farm;
             }
 
-        } catch (Exception e) {
+        } catch (FileNotFoundException e) {
             System.out.println("File not found");
 
         }
@@ -560,18 +650,21 @@ public class FarmApp {
 
     }
 
-    public static void saveDataInFile(Farm farm,String path) {
+    // Save data to file using PrintWriter
+    public static void saveDataInFile(Farm farm, String path) {
 
         try {
             File file = new File(path);
+            
+            // PrintWriter pw = new PrintWriter(file);
+            //it is better to use try with resources
+
             try (PrintWriter pw = new PrintWriter(file)) {
                 pw.println(farm);
                 for (int i = 0; i < farm.getShedList().size(); i++) {
                     pw.write(farm.getShedList().get(i).getId());
                     pw.println(farm.getShedList().get(i));
-                    
                 }
-
             }
         } catch (Exception e) {
             System.out.println("File not found");

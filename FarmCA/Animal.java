@@ -1,6 +1,8 @@
 package FarmCA;
 
 import java.util.UUID;
+//Using the UUID class to generate a unique ID for each animal
+//The UUID class is in the java.util package
 
 
 public abstract class Animal {
@@ -13,7 +15,8 @@ public abstract class Animal {
     }
 
     public Animal(String name) {
-        
+
+        //converting the UUID to a string
         this.id = UUID.randomUUID().toString();
 
         this.name = name;
@@ -35,6 +38,7 @@ public abstract class Animal {
         return name;
     }
 
+    //abstract method to print the details of the animal
     abstract public String printAnimalDetails();
 
    @Override

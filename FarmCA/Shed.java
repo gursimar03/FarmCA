@@ -5,6 +5,7 @@ import java.util.UUID;
 
 public class Shed {
 
+    //Considering that each shed has a unique ID and a milking machine with multiple animals
     private ArrayList<Animal> herd;
     private MilkingMachine milkingMachine;
     private String id;
@@ -89,6 +90,7 @@ public class Shed {
         }
     }
 
+    //Method to install a milk tank(cow) for the milking machine
     public void installTankForCow(MilkTank tank){
         milkingMachine.setCowMilk(tank);
     }
@@ -104,6 +106,7 @@ public class Shed {
         }
     }
 
+    //Method to check if the shed has animals that can be milked
     public boolean isMilkable() {
         for (Animal animal : herd) {
             if (animal instanceof Milkable) {
@@ -122,6 +125,7 @@ public class Shed {
         }
     }
 
+    //Method to print the details of the shed
     public void printShedDetails() {
         System.out.println("Shed ID: " + id);
         System.out.println("============");
@@ -131,8 +135,8 @@ public class Shed {
         System.out.println("============");
     }
 
+    //Method to print the details of the milking machine
     public void printMilkingMachineDetails() {
-       
         System.out.println("=======================");
         try {
             

@@ -1,51 +1,58 @@
 Owner Name: Gursimar
- Farm ID: 409458e0-64f7-4e36-9d68-1fd137f7f47b
+ Farm ID: 5f0f02df-9376-4ca3-8321-df5646181b67
 Shed1
 herd=[
 DairyCow :
- >> id=2acf6282-ee16-4884-8d21-519acde8ba1c
+ >> id=ecb70dae-3334-4e16-919e-9bcb0211f7f6
  >> name=Daisy
+ >> udder=31
+, 
+DairyCow :
+ >> id=7b06104a-0d51-498a-b634-3069a923b1b3
+ >> name=Daisy 258
  >> udder=23
 , 
 DairyCow :
- >> id=a55f7f70-374a-49a5-8f8e-7717e6dfe5d4
- >> name=Daisy 506
- >> udder=28
-, 
-DairyCow :
- >> id=93fe882e-89a9-4f52-855e-0115d4549b99
- >> name=Daisy 94
- >> udder=27
+ >> id=5414defc-b228-4af2-8a99-704e2ef1250e
+ >> name=Daisy 859
+ >> udder=38
 , 
 Goat :
- >> id=c505707c-87da-451b-9bcd-68672b4f4860
- >> name=Goat 694
- >> udder=2
-, 
-Goat :
- >> id=eb25a7bf-60ee-402b-b288-246f600bcbdc
- >> name=Goat 734
+ >> id=c7146e26-caed-4da8-b9ed-31439d3df657
+ >> name=Goat 540
  >> udder=3
 , 
 Goat :
- >> id=e3d6262f-1021-48d0-9616-15b1dce9922b
- >> name=Goat 795
- >> udder=2
+ >> id=7222de90-5e97-4f3a-b749-9a0cc30dad93
+ >> name=Goat 115
+ >> udder=3
 , 
 Goat :
- >> id=4f223c16-1b23-4fba-a346-7e5b42b0bea7
- >> name=Goat 764
+ >> id=6e2e6c2d-8f13-4a53-8d62-843dfcf9730a
+ >> name=Goat 625
+ >> udder=3
+, 
+Goat :
+ >> id=e2e5ff9d-c98d-4674-acb4-659b30e455e3
+ >> name=Goat 30
  >> udder=3
 ]
 Shed2
 herd=[
 BeefCow: 
- >> id=caf9dd0b-13d2-47d3-b3d3-854d16dd0ded
- >> name=BeefCow 394
+ >> id=e09adcfd-9ac7-46ff-a851-9ba17d4ca617
+ >> name=BeefCow 568
  >> pedgree=0
  >> weight=0, 
 BeefCow: 
- >> id=9c9f9024-0293-402e-86d9-a073a661bc83
- >> name=BeefCow 359
+ >> id=c18ee538-7fe5-4730-b5c7-eaf10cba5918
+ >> name=BeefCow 108
  >> pedgree=0
  >> weight=0]
+ad
+herd=[
+DairyCow :
+ >> id=d89e0205-23fe-4ef3-ac83-8ea810364be3
+ >> name=Daisy 745
+ >> udder=29
+]

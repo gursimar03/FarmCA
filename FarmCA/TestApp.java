@@ -6,6 +6,9 @@ public class TestApp {
 
     public static void main(String[] args) {
 
+        //inital test app to test the classes
+        
+
         DairyCow a = new DairyCow();
 
         ArrayList<Animal> cows = new ArrayList<>();

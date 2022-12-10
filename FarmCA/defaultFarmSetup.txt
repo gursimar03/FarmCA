@@ -7,3 +7,6 @@ xxx xxx xxx xxx
 Shed2 2
 BeefCow 2
 xxx xxx
+Chicken 1
+xxx
+

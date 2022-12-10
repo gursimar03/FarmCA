@@ -5,6 +5,9 @@ import java.util.UUID;
 
 public class Farm {
 
+
+    //Considering that each farm has a unique ID and owner name with multiple sheds
+
     private String farmID;
     private String OwnerName;
     private ArrayList<Shed> shedList;
@@ -20,7 +23,6 @@ public class Farm {
         this.OwnerName = OwnerName;
         this.shedList = shed;
     }
-
 
     public Farm() {
     }

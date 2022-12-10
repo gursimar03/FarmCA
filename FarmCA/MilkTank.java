@@ -2,6 +2,7 @@ package FarmCA;
 
 public class MilkTank {
 
+    // MAX_CAPACITY is a constant, so it is declared as final but as user can set custom capacity, it is not static and final
     double MAX_CAPACITY = 2000;
     private double currentCapacity = 0;
     
@@ -52,6 +53,7 @@ public class MilkTank {
                 '}';
     }
 
+    // This method is used to add milk to the tank from an animal
     public boolean addToTank(Animal animal) {
 
         if (animal instanceof Milkable){
