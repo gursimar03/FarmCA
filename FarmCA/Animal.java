@@ -19,13 +19,23 @@ public abstract class Animal {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
 
+    abstract public String printAnimalDetails();
+
    @Override
     public String toString() {
-        return "Animal{" + "id=" + id + ", name=" + name + '}';
+        return "Name: " + name + "\n ID: " + id;
     }
 
 

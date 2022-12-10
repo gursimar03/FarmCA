@@ -47,4 +47,10 @@ public class Goat extends Animal implements Milkable {
         return udder;
     }
 
+    @Override
+    public String printAnimalDetails() {
+        // TODO Auto-generated method stub
+        return ">>>Animal ID: " + getId() + "\n Animal Name: " + getName() + "\n Animal Type: Goat";
+    }
+
 }

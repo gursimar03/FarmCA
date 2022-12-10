@@ -96,6 +96,12 @@ public class Shed {
     public void installTankForGoat(MilkTank tank){
         milkingMachine.setGoatMilk(tank);
     }
+
+    public void printAllAnimalDetails() {
+        for (Animal animal : herd) {
+            System.out.println(animal.printAnimalDetails());
+        }
+    }
     
 
     public void milkAnimals() {

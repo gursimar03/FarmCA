@@ -24,4 +24,10 @@ public class BeefCow extends Animal {
                 ", id=" + getId() +
                 '}';
     }
+
+    @Override
+    public String printAnimalDetails() {
+        // TODO Auto-generated method stub
+        return ">>>Animal ID: " + getId() + "\n Animal Name: " + getName() + "\n Animal Type: BeefCow";
+    }
 }

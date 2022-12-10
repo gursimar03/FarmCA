@@ -60,10 +60,6 @@ public class Farm {
 
     @Override
     public String toString() {
-        return "Farm{" +
-                "farmID=" + farmID +
-                ", OwnerName='" + OwnerName + '\'' +
-                
-                '}';
+        return "Owner Name: " + OwnerName + "\n Farm ID: " + farmID;
     }
 }
