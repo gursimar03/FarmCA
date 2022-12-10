@@ -13,13 +13,11 @@ public class Sheep extends Animal {
         this.age = age;
     }
 
-    
-
     public Sheep(int id, String name) {
         super(name);
 
     }
-    
+
     public int getPedgree() {
         return pedgree;
     }
@@ -44,12 +42,10 @@ public class Sheep extends Animal {
         this.age = age;
     }
 
-    
-
     public Sheep() {
-        
-        //generate random name
-        super("Sheep " + (int)(Math.random() * 1000));
+
+        // generate random name
+        super("Sheep " + (int) (Math.random() * 1000));
 
     }
 
@@ -59,10 +55,11 @@ public class Sheep extends Animal {
 
     @Override
     public String toString() {
-        return "Sheep{" +
-                ", id=" + getId() +
-                ", name='" + getName() + '\'' +
-                '}';
+        return "\nGoat: " +
+                "\n >> id=" + getId() +
+                "\n >> name=" + getName()
+                + "\n >> pedgree=" + this.pedgree
+                + "\n >> weight=" + this.weight;
     }
 
     @Override

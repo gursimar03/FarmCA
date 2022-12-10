@@ -36,7 +36,11 @@ public class DairyCow extends Animal implements Milkable {
 
     @Override
     public String toString() {
-        return "DairyCow{" + "udder=" + udder + '}';
+        return "\nDairyCow :" +
+                "\n >> id=" + getId() +
+                "\n >> name=" + getName()
+                + "\n >> udder=" + this.udder
+                + "\n";
     }
 
     @Override

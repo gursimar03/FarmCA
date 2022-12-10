@@ -41,7 +41,7 @@ public class BeefCow extends Animal {
         this.age = age;
     }
 
-    
+
 
     public BeefCow() {
         
@@ -56,9 +56,11 @@ public class BeefCow extends Animal {
 
     @Override
     public String toString() {
-        return "BeefCow{" +
-                ", id=" + getId() +
-                '}';
+        return "\nBeefCow: " +
+                "\n >> id=" + getId() +
+                "\n >> name=" + getName()
+                + "\n >> pedgree=" + this.pedgree
+                + "\n >> weight=" + this.weight;
     }
 
     @Override

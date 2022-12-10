@@ -1,5 +1,6 @@
 package FarmCA;
 
+import java.io.PrintWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -35,6 +36,8 @@ public class FarmApp {
         System.out.println("8. Milk all Animals");
         System.out.println("9. Show tank status");
         System.out.println("10. Report a Dead Animal");
+        System.out.println("11. Regular Milk Collection ");
+        System.out.println("12. Export Farm Details to a file");
         System.out.println("Q. Quit");
         System.out.print("Please enter your choice: ");
     }
@@ -156,7 +159,7 @@ public class FarmApp {
                                 System.out.println("Please enter new ID: ");
                                 String farmID = sc.next();
                                 farm.setFarmID(farmID);
-                            
+
                                 System.out.println("--- Farm details updated ---");
 
                                 break;
@@ -249,7 +252,6 @@ public class FarmApp {
 
                         for (Shed shed : shedList1) {
 
-
                             if (shed.getMilkingMachine() == null && shed.isMilkable()) {
                                 shed.setMilkingMachine(new MilkingMachine());
                                 System.out.println(">>> Milking Machine installed in " + shed.getId());
@@ -292,26 +294,26 @@ public class FarmApp {
                                 System.out.println("    >>> No Milking Machine in " + shed.getId());
                             }
                         }
-                        
+
                         System.out.println("Milking Complete");
 
                         break;
 
                     case "9":
-                            System.out.println("*** Tank Status ***\n");
-                            ArrayList<Shed> shedList3 = farm.getShedList();
-                            
-                            for (Shed shed : shedList3) {
-                                shed.printMilkingMachineDetails();
-                            }
-                            break;
+                        System.out.println("*** Tank Status ***\n");
+                        ArrayList<Shed> shedList3 = farm.getShedList();
+
+                        for (Shed shed : shedList3) {
+                            shed.printMilkingMachineDetails();
+                        }
+                        break;
                     case "10":
                         System.out.println("*** Report A Dead Animal ***");
                         shedIndex = printShedDetails(farm.getShedList());
                         index = printAllAnimals(farm.getShedList().get(shedIndex).getHerd());
                         farm.getShedList().get(shedIndex).getHerd().remove(index);
                         System.out.println("Animal removed");
-                            break;
+                        break;
                     case "11":
                         System.out.println("*** Regular Milk Collection ***");
                         ArrayList<Shed> shedList4 = farm.getShedList();
@@ -324,9 +326,31 @@ public class FarmApp {
                                 System.out.println("    >>> No Milking Machine in " + shed.getId());
                             }
                         }
-                            
+
+                    case "12":
+                        System.out.println("*** Export Data to file ***");
+                        System.out.println("1. Export to default file");
+                        System.out.println("2. Export to custom file");
+                        String exportChoice = sc.next();
+                        switch (exportChoice) {
+                            case "1":
+                                saveDataInFile(farm,"FarmCA/savedDetails.txt");
+                                break;
+                            case "2":
+                                System.out.print("Please enter the file path: ");
+                                Scanner sc1 = new Scanner(System.in);
+                                String path = sc1.nextLine();
+                                saveDataInFile(farm, path);
+                                break;
+                            default:
+                                System.out.println("Invalid choice");
+                                break;
+                        }
+                        break;
+
                     case "Q":
                         System.out.println("Thank you for using Farm App");
+                        saveDataInFile(farm,"FarmCA/savedDetails.txt");
                         System.exit(0);
                         break;
                     default:
@@ -534,5 +558,23 @@ public class FarmApp {
 
         return null;
 
+    }
+
+    public static void saveDataInFile(Farm farm,String path) {
+
+        try {
+            File file = new File(path);
+            try (PrintWriter pw = new PrintWriter(file)) {
+                pw.println(farm);
+                for (int i = 0; i < farm.getShedList().size(); i++) {
+                    pw.write(farm.getShedList().get(i).getId());
+                    pw.println(farm.getShedList().get(i));
+                    
+                }
+
+            }
+        } catch (Exception e) {
+            System.out.println("File not found");
+        }
     }
 }

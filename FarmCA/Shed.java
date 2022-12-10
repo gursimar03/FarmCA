@@ -145,7 +145,7 @@ public class Shed {
 
     @Override
     public String toString() {
-        return "Shed{" + "herd=" + herd + '}';
+        return "\n" + "herd=" + herd.toString() ;
     }
 
 }
