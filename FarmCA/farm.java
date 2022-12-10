@@ -52,10 +52,13 @@ public class Farm {
     public void printFarmDetails() {
         System.out.println("Farm ID: " + farmID);
         System.out.println("Owner Name: " + OwnerName);
-        System.out.println("Shed Details: ");
         for (Shed shed : shedList) {
             shed.printShedDetails();
         }
+    }
+
+    public void removeShed(Shed shed) {
+        this.shedList.remove(shed);    
     }
 
     @Override

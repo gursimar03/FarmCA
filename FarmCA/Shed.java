@@ -97,12 +97,22 @@ public class Shed {
         milkingMachine.setGoatMilk(tank);
     }
 
+
     public void printAllAnimalDetails() {
         for (Animal animal : herd) {
             System.out.println(animal.printAnimalDetails());
         }
     }
-    
+
+    public boolean isMilkable() {
+        for (Animal animal : herd) {
+            if (animal instanceof Milkable) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     public void milkAnimals() {
         for (Animal animal : herd) {
@@ -113,10 +123,22 @@ public class Shed {
     }
 
     public void printShedDetails() {
-        System.out.println("Shed Details");
+        System.out.println("Shed ID: " + id);
         System.out.println("============");
         for (Animal animal : herd) {
-            System.out.println(animal);
+            System.out.println("    >>> "+animal.getName() + " is a " + animal.getClass().getSimpleName());
+        }
+        System.out.println("============");
+    }
+
+    public void printMilkingMachineDetails() {
+       
+        System.out.println("=======================");
+        try {
+            
+            milkingMachine.tankStatus();
+        } catch (Exception e) {
+            System.out.println("No Milking Machine Installed");
         }
     }
 

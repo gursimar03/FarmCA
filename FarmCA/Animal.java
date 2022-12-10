@@ -8,6 +8,10 @@ public abstract class Animal {
     private String id;
     protected String name;
 
+    public Animal() {
+        this.id = UUID.randomUUID().toString();
+    }
+
     public Animal(String name) {
         
         this.id = UUID.randomUUID().toString();

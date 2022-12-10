@@ -40,6 +40,10 @@ public class MilkingMachine {
     }
 
 
+    public void emptyMilkTanks(){
+        this.cowMilk.setCurrentCapacity(0);;
+        this.goatMilk.setCurrentCapacity(0);
+    }
 
     public void milk(Milkable animal){
 
@@ -64,6 +68,24 @@ public class MilkingMachine {
         else{
             throw new IllegalArgumentException("This animal cannot be milked");
         }
+    }
+
+    public void tankStatus(){
+
+        if(this.getCowMilkTank() != null){
+            System.out.println("Cow tank: " + this.getCowMilkTank() + "L");
+        }
+        else{
+            System.out.println("Cow tank: No tank installed");
+        }
+
+        if(this.getGoatMilkTank() != null){
+            System.out.println("Goat tank: " + this.getGoatMilkTank() + "L");
+        }
+        else{
+            System.out.println("Goat tank: No tank installed");
+        }
+
     }
 
     @Override

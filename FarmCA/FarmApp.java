@@ -13,6 +13,7 @@ public class FarmApp {
 
     public static void mainMenu() {
 
+        System.out.println();
         System.out.println("*** Farm App ***");
         System.out.println("1. Auto Fill Farm using default file");
         System.out.println("2. Auto Fill Farm using user specified file");
@@ -22,13 +23,18 @@ public class FarmApp {
     }
 
     public static void farmMenu() {
+        System.out.println();
         System.out.println("*** Farm Menu ***");
         System.out.println("1. Add a Shed");
         System.out.println("2. Add an Animal to a Shed");
-        System.out.println("3. Print Farm Details");
-        System.out.println("4. Print Shed Details");
+        System.out.println("3. Print/Edit Farm Details");
+        System.out.println("4. Print/Edit Shed Details");
         System.out.println("5. Print/Edit Animal Details");
-        System.out.println("6. Print All Detaisl of a Farm");
+        System.out.println("6. Print All Details of a Farm");
+        System.out.println("7. Auto install neccessary milking machine and tanks");
+        System.out.println("8. Milk all Animals");
+        System.out.println("9. Show tank status");
+        System.out.println("10. Report a Dead Animal");
         System.out.println("Q. Quit");
         System.out.print("Please enter your choice: ");
     }
@@ -87,7 +93,7 @@ public class FarmApp {
 
                 switch (farmChoice) {
                     case "1":
-                        System.out.print("*** Add a Shed ***");
+                        System.out.println("*** Add a Shed ***");
                         System.out.print("Please enter the shed name: ");
                         String shedName = sc.next();
                         farm.addShed(new Shed(shedName));
@@ -136,13 +142,59 @@ public class FarmApp {
                         }
                         break;
                     case "3":
-                        System.out.println("*** Print Farm Details ***");
+                        System.out.println("*** Print/Edit Farm Details ***");
                         farm.printFarmDetails();
+                        System.out.println("1. Edit details");
+                        System.out.println("2. Remove shed");
+                        System.out.println("3. Return to main menu");
+                        String farmDetailsChoice = sc.next();
+                        switch (farmDetailsChoice) {
+                            case "1":
+                                System.out.print("Please enter the new owner's name: ");
+                                String farmName = sc.next();
+                                farm.setOwnerName(farmName);
+                                System.out.println("Please enter new ID: ");
+                                String farmID = sc.next();
+                                farm.setFarmID(farmID);
+                            
+                                System.out.println("--- Farm details updated ---");
+
+                                break;
+                            case "2":
+                                shedIndex = printShedDetails(farm.getShedList());
+                                farm.removeShed(farm.getShedList().get(shedIndex));
+                                break;
+                            case "3":
+                                break;
+                            default:
+                                System.out.println("Invalid choice");
+                                break;
+                        }
                         break;
                     case "4":
-                        System.out.println("*** Print Shed Details ***");
+                        System.out.println("*** Print/Edit Shed Details ***");
                         shedIndex = printShedDetails(farm.getShedList());
                         farm.getShedList().get(shedIndex).printShedDetails();
+                        System.out.println("1. Edit details");
+                        System.out.println("2. Remove shed");
+                        System.out.println("3. Return to main menu");
+                        String shedDetailsChoice = sc.next();
+                        switch (shedDetailsChoice) {
+                            case "1":
+                                System.out.print("Please enter the new shed ID: ");
+                                String n = sc.next();
+                                farm.getShedList().get(shedIndex).setId(n);
+                                System.out.println("--- Shed details updated ---");
+                                break;
+                            case "2":
+                                farm.removeShed(farm.getShedList().get(shedIndex));
+                                break;
+                            case "3":
+                                break;
+                            default:
+                                System.out.println("Invalid choice");
+                                break;
+                        }
                         break;
                     case "5":
                         System.out.println("*** Print/Edit Animal Details ***");
@@ -190,6 +242,89 @@ public class FarmApp {
                             System.out.println("____________________");
                         }
                         break;
+
+                    case "7":
+                        System.out.println("*** Auto Installing Machine and Tanks ***\n");
+                        ArrayList<Shed> shedList1 = farm.getShedList();
+
+                        for (Shed shed : shedList1) {
+
+
+                            if (shed.getMilkingMachine() == null && shed.isMilkable()) {
+                                shed.setMilkingMachine(new MilkingMachine());
+                                System.out.println(">>> Milking Machine installed in " + shed.getId());
+
+                                ArrayList<Animal> herd = shed.getHerd();
+
+                                for (Animal animal : herd) {
+                                    if (animal instanceof DairyCow) {
+                                        if (shed.getMilkingMachine().getCowMilkTank() == null) {
+                                            shed.installTankForCow(new MilkTank());
+                                            System.out.println("    Milk Tank installed in " + shed.getId() + " for "
+                                                    + animal.getClass().getSimpleName());
+                                        }
+                                    } else if (animal instanceof Goat) {
+                                        if (shed.getMilkingMachine().getGoatMilkTank() == null) {
+                                            shed.installTankForGoat(new MilkTank());
+                                            System.out.println("    Milk Tank installed in " + shed.getId() + " for "
+                                                    + animal.getClass().getSimpleName());
+                                        }
+                                    }
+
+                                }
+
+                            } else {
+                                System.out.println(">>> No Milking Machine Needed " + shed.getId());
+                            }
+                        }
+
+                        break;
+
+                    case "8":
+                        System.out.println("*** Milking ***\n");
+                        ArrayList<Shed> shedList2 = farm.getShedList();
+
+                        for (Shed shed : shedList2) {
+                            if (shed.getMilkingMachine() != null) {
+                                System.out.println("    >>> Milking " + shed.getId());
+                                shed.milkAnimals();
+                            } else {
+                                System.out.println("    >>> No Milking Machine in " + shed.getId());
+                            }
+                        }
+                        
+                        System.out.println("Milking Complete");
+
+                        break;
+
+                    case "9":
+                            System.out.println("*** Tank Status ***\n");
+                            ArrayList<Shed> shedList3 = farm.getShedList();
+                            
+                            for (Shed shed : shedList3) {
+                                shed.printMilkingMachineDetails();
+                            }
+                            break;
+                    case "10":
+                        System.out.println("*** Report A Dead Animal ***");
+                        shedIndex = printShedDetails(farm.getShedList());
+                        index = printAllAnimals(farm.getShedList().get(shedIndex).getHerd());
+                        farm.getShedList().get(shedIndex).getHerd().remove(index);
+                        System.out.println("Animal removed");
+                            break;
+                    case "11":
+                        System.out.println("*** Regular Milk Collection ***");
+                        ArrayList<Shed> shedList4 = farm.getShedList();
+                        for (Shed shed : shedList4) {
+                            if (shed.getMilkingMachine() != null) {
+                                shed.getMilkingMachine().emptyMilkTanks();
+                                System.out.println("    >>> Tank(s) Emptied in " + shed.getId());
+                                shed.milkAnimals();
+                            } else {
+                                System.out.println("    >>> No Milking Machine in " + shed.getId());
+                            }
+                        }
+                            
                     case "Q":
                         System.out.println("Thank you for using Farm App");
                         System.exit(0);

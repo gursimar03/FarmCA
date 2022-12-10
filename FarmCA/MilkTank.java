@@ -13,6 +13,11 @@ public class MilkTank {
         this.MAX_CAPACITY = customCapacity;
     }
 
+
+    public void setCurrentCapacity(double currentCapacity) {
+        this.currentCapacity = currentCapacity;
+    }
+
     public double getCapacity() {
         return MAX_CAPACITY;
     }
