@@ -40,6 +40,7 @@ public class FarmApp {
         System.out.println("10. Report a Dead Animal");
         System.out.println("11. Regular Milk Collection ");
         System.out.println("12. Export Farm Details to a file");
+        System.out.println("13. View Sorted Animals");
         System.out.println("Q. Quit");
         System.out.print("Please enter your choice: ");
     }
@@ -400,6 +401,42 @@ public class FarmApp {
                                 System.out.println("Invalid choice");
                                 break;
                         }
+                        break;
+
+                    case "13":
+                        System.out.println("*** Sort Animals ***");
+                        System.out.println("1. Sort Dairy Cows Mike Production");
+                        System.out.println("2. Sort Goats by Milk Production");
+                        System.out.print("Please enter your choice:");
+                        String systemChoice = sc.next();
+                        
+                        if(systemChoice.equals("1")){
+                            System.out.println("Dairy Cows sorted by Milk Production");
+                            ArrayList<DairyCow> cows = farm.sortDairyCow();
+
+                           System.out.println("------------------------------------");
+                            System.out.format("%-15s %s \n", "Name", "Udder Size");
+                            System.out.println("____________________________________");
+                            for (DairyCow cow : cows) {
+                                System.out.format("%-15s %s", cow.getName(), cow.getUdderSize());
+                                System.out.println();
+                            }
+                        }else if(systemChoice.equals("2")){
+                            System.out.println("Goats sorted by Milk Production");
+                            ArrayList<Goat> goats = farm.sortGoat();
+
+                            System.out.println("------------------------------------");
+                            System.out.format("%-15s %s \n", "Name", "Udder Size");
+                            System.out.println("____________________________________");
+                            for (Goat goat : goats) {
+                                System.out.format("%-15s %s", goat.getName(), goat.getUdder());
+                                System.out.println();
+                            }
+
+                       
+                        }else{
+                            System.out.println("Invalid choice\n");
+                        } 
                         break;
 
                     case "q":

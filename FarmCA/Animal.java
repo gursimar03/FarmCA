@@ -1,9 +1,9 @@
 package FarmCA;
 
+import java.util.ArrayList;
 import java.util.UUID;
 //Using the UUID class to generate a unique ID for each animal
 //The UUID class is in the java.util package
-
 
 public abstract class Animal {
 
@@ -16,7 +16,7 @@ public abstract class Animal {
 
     public Animal(String name) {
 
-        //converting the UUID to a string
+        // converting the UUID to a string
         this.id = UUID.randomUUID().toString();
 
         this.name = name;
@@ -38,14 +38,29 @@ public abstract class Animal {
         return name;
     }
 
-    //abstract method to print the details of the animal
+    // abstract method to print the details of the animal
     abstract public String printAnimalDetails();
 
-   @Override
+    @Override
     public String toString() {
         return "Name: " + name + "\n ID: " + id;
     }
 
+    // comparing the animal objects
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Animal other = (Animal) obj;
+        if ((this.id == null) ? (other.id != null) : !this.id.equals(other.id)) {
+            return false;
+        }
+        return true;
+    }
 
-
+   
 }

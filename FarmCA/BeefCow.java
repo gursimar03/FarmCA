@@ -1,6 +1,6 @@
 package FarmCA;
 
-public class BeefCow extends Animal {
+public class BeefCow extends Animal implements Comparable<BeefCow> {
 
     private int pedgree;
     private int weight;
@@ -67,4 +67,18 @@ public class BeefCow extends Animal {
     public String printAnimalDetails() {
         return ">>>Animal ID: " + getId() + "\n Animal Name: " + getName() + "\n Animal Type: BeefCow";
     }
+
+    @Override
+    public int compareTo(BeefCow o) {
+        
+        if (this.getWeight() > o.getWeight()) {
+            return 1;
+        } else if (this.getWeight() < o.getWeight()) {
+            return -1;
+        }
+
+        return 0;
+    }
+
+    
 }

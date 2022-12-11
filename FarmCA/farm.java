@@ -67,4 +67,68 @@ public class Farm {
     public String toString() {
         return "Owner Name: " + OwnerName + "\n Farm ID: " + farmID ;
     }
+
+
+
+    public ArrayList<DairyCow> sortDairyCow() {
+
+        ArrayList<Animal> animalList = new ArrayList<>();
+
+        for (Shed shed : shedList) {
+            animalList.addAll(shed.getHerd());
+        }
+
+        //sort by udder size
+        ArrayList<DairyCow> dairyCowList = new ArrayList<>();
+
+        for (Animal dairyCow : animalList) {
+            if(dairyCow instanceof DairyCow){
+                dairyCowList.add((DairyCow) dairyCow);
+            }
+        }
+
+        //sort dairyCowList by udder size
+        for (int i = 0; i < dairyCowList.size(); i++) {
+            for (int j = 0; j < dairyCowList.size() - 1; j++) {
+                if (dairyCowList.get(j).getUdderSize() > dairyCowList.get(j + 1).getUdderSize()) {
+                    DairyCow temp = dairyCowList.get(j);
+                    dairyCowList.set(j, dairyCowList.get(j + 1));
+                    dairyCowList.set(j + 1, temp);
+                }
+            }
+        }
+
+        return dairyCowList;
+    }
+
+    public ArrayList<Goat> sortGoat() {
+
+        ArrayList<Animal> animalList = new ArrayList<>();
+
+        for (Shed shed : shedList) {
+            animalList.addAll(shed.getHerd());
+        }
+
+        //sort by udder size
+        ArrayList<Goat> goatsList = new ArrayList<>();
+
+        for (Animal dairyCow : animalList) {
+            if(dairyCow instanceof Goat){
+                goatsList.add((Goat) dairyCow);
+            }
+        }
+
+        //sort dairyCowList by udder size
+        for (int i = 0; i < goatsList.size(); i++) {
+            for (int j = 0; j < goatsList.size() - 1; j++) {
+                if (goatsList.get(j).getUdder() > goatsList.get(j + 1).getUdder()) {
+                    Goat temp = goatsList.get(j);
+                    goatsList.set(j, goatsList.get(j + 1));
+                    goatsList.set(j + 1, temp);
+                }
+            }
+        }
+
+        return goatsList;
+    }
 }

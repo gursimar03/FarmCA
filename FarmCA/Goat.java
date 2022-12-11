@@ -1,6 +1,6 @@
 package FarmCA;
 
-public class Goat extends Animal implements Milkable {
+public class Goat extends Animal implements Milkable , Comparable<Goat> {
 
     private int udder;
 
@@ -51,5 +51,19 @@ public class Goat extends Animal implements Milkable {
     public String printAnimalDetails() {
         return ">>>Animal ID: " + getId() + "\n Animal Name: " + getName() + "\n Animal Type: Goat";
     }
+
+    @Override
+    public int compareTo(Goat o) {
+
+        if(this.udder > o.udder)
+            return 1;
+        else if(this.udder < o.udder)
+            return -1;
+        else
+            return 0;
+
+    }
+
+
 
 }

@@ -1,6 +1,6 @@
 package FarmCA;
 
-public class DairyCow extends Animal implements Milkable {
+public class DairyCow extends Animal implements Milkable , Comparable<DairyCow> {
 
     private int udder;
 
@@ -26,7 +26,7 @@ public class DairyCow extends Animal implements Milkable {
         return name;
     }
     
-    public double getCapacity() {
+    public double getUdderSize() {
         return udder;
     }
 
@@ -47,6 +47,19 @@ public class DairyCow extends Animal implements Milkable {
     public String printAnimalDetails() {
         return ">>>Animal ID: " + getId() + "\n Animal Name: " + getName() + "\n Animal Type: DairyCow";
     }
+
+    @Override
+    public int compareTo(DairyCow o) {
+        
+        if(this.udder > o.udder)
+            return 1;
+        else if(this.udder < o.udder)
+            return -1;
+        else
+        return 0;
+    }
+
+  
 
 
 }
