@@ -17,6 +17,15 @@ public class BeefCow extends Animal implements Comparable<BeefCow> {
         this.age = age;
     }
 
+    public BeefCow() {
+        // generate random name
+        super("BeefCow " + (int) (Math.random() * 1000));
+    }
+
+    public BeefCow(String name) {
+        super(name);
+    }
+
     public int getPedgree() {
         return pedgree;
     }
@@ -41,19 +50,6 @@ public class BeefCow extends Animal implements Comparable<BeefCow> {
         this.age = age;
     }
 
-
-
-    public BeefCow() {
-        
-        //generate random name
-        super("BeefCow " + (int)(Math.random() * 1000));
-
-    }
-
-    public BeefCow(String name) {
-        super(name);
-    }
-
     @Override
     public String toString() {
         return "\nBeefCow: " +
@@ -70,7 +66,7 @@ public class BeefCow extends Animal implements Comparable<BeefCow> {
 
     @Override
     public int compareTo(BeefCow o) {
-        
+
         if (this.getWeight() > o.getWeight()) {
             return 1;
         } else if (this.getWeight() < o.getWeight()) {
@@ -80,5 +76,4 @@ public class BeefCow extends Animal implements Comparable<BeefCow> {
         return 0;
     }
 
-    
 }

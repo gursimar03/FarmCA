@@ -8,6 +8,11 @@ public class Farm {
 
     //Considering that each farm has a unique ID and owner name with multiple sheds
 
+    enum AnimalTypes {
+        DairyCow, Goat, Sheep, BeefCow
+    }
+    
+
     private String farmID;
     private String OwnerName;
     private ArrayList<Shed> shedList;
@@ -63,13 +68,6 @@ public class Farm {
         this.shedList.remove(shed);    
     }
 
-    @Override
-    public String toString() {
-        return "Owner Name: " + OwnerName + "\n Farm ID: " + farmID ;
-    }
-
-
-
     public ArrayList<DairyCow> sortDairyCow() {
 
         ArrayList<Animal> animalList = new ArrayList<>();
@@ -101,6 +99,8 @@ public class Farm {
         return dairyCowList;
     }
 
+    
+
     public ArrayList<Goat> sortGoat() {
 
         ArrayList<Animal> animalList = new ArrayList<>();
@@ -131,4 +131,16 @@ public class Farm {
 
         return goatsList;
     }
+
+    public void avaiableAnimalTypes() {
+        for (AnimalTypes animalType : AnimalTypes.values()) {
+            System.out.print("\n  >>>"+animalType);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Owner Name: " + OwnerName + "\n Farm ID: " + farmID ;
+    }
+
 }

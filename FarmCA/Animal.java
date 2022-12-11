@@ -1,7 +1,7 @@
 package FarmCA;
 
-import java.util.ArrayList;
 import java.util.UUID;
+
 //Using the UUID class to generate a unique ID for each animal
 //The UUID class is in the java.util package
 
@@ -62,5 +62,4 @@ public abstract class Animal {
         return true;
     }
 
-   
 }

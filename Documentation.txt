@@ -1,0 +1,35 @@
+
+Farm App
+
+In this project I am considering that a farm has multiple sheds and each shed has its own milking machine which could be attached to 
+two milk tanks. The two milk tanks are for Cow and goat.
+
+A shed has multiple Animals of different types stored as ArrayList of herds
+
+For saving data in text file I have used PrintWriter library referenced from  
+
+// https://www.javatpoint.com/java-printwriter-class
+
+
+I am considering Animal class as abstract to provide a common, implemented functionality among all the animals.
+
+Also Milkable class is an interface because to provide a behavior to Milkable animals i.e DairyCows and Goats
+
+
+
+To clear the terminal to provide good user-interface i have used 
+
+`` System.out.print("\033[H\033[2J");
+        System.out.flush();
+```
+referenced from
+it used regrex to clear the scree 
+flush();
+is to used to flush the buffer output in the terminal
+// https://stackoverflow.com/questions/2979383/how-to-clear-the-console
+
+
+
+TestApp.java was made before farmApp to check all the classes
+
+class diagram included just as reference but will be updated or re-made for the interview 
