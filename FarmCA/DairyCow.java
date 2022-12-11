@@ -1,31 +1,31 @@
 package FarmCA;
 
-public class DairyCow extends Animal implements Milkable , Comparable<DairyCow> {
+public class DairyCow extends Animal implements Milkable, Comparable<DairyCow> {
 
     private int udder;
 
     public DairyCow() {
-        
-        //generate random name
-        super("Daisy " + (int)(Math.random() * 1000));
 
-        //udder capacity between 20 to 40 random
+        // generate random name
+        super("Daisy " + (int) (Math.random() * 1000));
+
+        // udder capacity between 20 to 40 random
         this.udder = (int) (Math.random() * 20) + 20;
     }
 
     public DairyCow(String name) {
-        
-        //generate random name
+
+        // generate random name
         super(name);
 
-        //udder capacity between 20 to 40 random
+        // udder capacity between 20 to 40 random
         this.udder = (int) (Math.random() * 20) + 20;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
-    
+
     public double getUdderSize() {
         return udder;
     }
@@ -50,16 +50,13 @@ public class DairyCow extends Animal implements Milkable , Comparable<DairyCow> 
 
     @Override
     public int compareTo(DairyCow o) {
-        
-        if(this.udder > o.udder)
+
+        if (this.udder > o.udder)
             return 1;
-        else if(this.udder < o.udder)
+        else if (this.udder < o.udder)
             return -1;
         else
-        return 0;
+            return 0;
     }
-
-  
-
 
 }
