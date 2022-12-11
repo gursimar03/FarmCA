@@ -69,14 +69,14 @@ public class Sheep extends Animal implements Comparable<Sheep> {
 
     @Override
     public int compareTo(Sheep o) {
-       
-        if(this.pedgree > o.pedgree)
+
+        if (this.pedgree > o.pedgree)
             return 1;
-        else if(this.pedgree < o.pedgree)
+        else if (this.pedgree < o.pedgree)
             return -1;
         else
 
-        return 0;
+            return 0;
     }
 
 }

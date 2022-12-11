@@ -6,8 +6,7 @@ public class TestApp {
 
     public static void main(String[] args) {
 
-        //inital test app to test the classes
-        
+        // inital test app to test the classes
 
         DairyCow a = new DairyCow();
 
@@ -17,20 +16,19 @@ public class TestApp {
         Goat aGoat = new Goat("goat");
         goats.add(aGoat);
 
-
         cows.add(a);
 
         DairyCow a2 = new DairyCow();
 
         ArrayList<Shed> shed = new ArrayList<>();
         shed.add(new Shed(cows));
-        
+
         cows.add(a2);
-        
+
         Shed b = new Shed(goats);
         shed.add(b);
 
-        Farm c = new Farm("1","myname",shed);
+        Farm c = new Farm("1", "myname", shed);
 
         MilkingMachine m = new MilkingMachine();
 
@@ -39,7 +37,7 @@ public class TestApp {
         shed.get(0).installTankForCow(new MilkTank());
 
         shed.get(0).milkAnimals();
-        
+
         System.out.println(m);
 
         MilkingMachine m2 = new MilkingMachine();

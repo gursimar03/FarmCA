@@ -5,13 +5,14 @@ import java.util.UUID;
 
 public class Shed {
 
-    //Considering that each shed has a unique ID and a milking machine with multiple animals
+    // Considering that each shed has a unique ID and a milking machine with
+    // multiple animals
     private ArrayList<Animal> herd;
     private MilkingMachine milkingMachine;
     private String id;
 
     public Shed(ArrayList<Animal> animal) {
-        
+
         this.id = UUID.randomUUID().toString();
         this.herd = animal;
     }
@@ -21,12 +22,10 @@ public class Shed {
         this.herd = new ArrayList<>();
     }
 
-    public Shed(String id){
+    public Shed(String id) {
         this.id = id;
         this.herd = new ArrayList<>();
     }
-
-    
 
     public Shed(MilkingMachine milkingMachine, ArrayList<Animal> animal, String id) {
         this.milkingMachine = milkingMachine;
@@ -61,7 +60,6 @@ public class Shed {
         this.milkingMachine = milkingMachine;
     }
 
-
     public ArrayList<Animal> getHerd() {
         return herd;
     }
@@ -90,15 +88,14 @@ public class Shed {
         }
     }
 
-    //Method to install a milk tank(cow) for the milking machine
-    public void installTankForCow(MilkTank tank){
+    // Method to install a milk tank(cow) for the milking machine
+    public void installTankForCow(MilkTank tank) {
         milkingMachine.setCowMilk(tank);
     }
 
-    public void installTankForGoat(MilkTank tank){
+    public void installTankForGoat(MilkTank tank) {
         milkingMachine.setGoatMilk(tank);
     }
-
 
     public void printAllAnimalDetails() {
         for (Animal animal : herd) {
@@ -106,7 +103,7 @@ public class Shed {
         }
     }
 
-    //Method to check if the shed has animals that can be milked
+    // Method to check if the shed has animals that can be milked
     public boolean isMilkable() {
         for (Animal animal : herd) {
             if (animal instanceof Milkable) {
@@ -116,7 +113,6 @@ public class Shed {
         return false;
     }
 
-
     public void milkAnimals() {
         for (Animal animal : herd) {
             if (animal instanceof Milkable) {
@@ -125,31 +121,30 @@ public class Shed {
         }
     }
 
-    //Method to print the details of the shed
+    // Method to print the details of the shed
     public void printShedDetails() {
         System.out.println("Shed ID: " + id);
         System.out.println("============");
         for (Animal animal : herd) {
-            System.out.println("    >>> "+animal.getName() + " is a " + animal.getClass().getSimpleName());
+            System.out.println("    >>> " + animal.getName() + " is a " + animal.getClass().getSimpleName());
         }
         System.out.println("============");
     }
 
-    //Method to print the details of the milking machine
+    // Method to print the details of the milking machine
     public void printMilkingMachineDetails() {
         System.out.println("=======================");
         try {
-            
+
             milkingMachine.tankStatus();
         } catch (Exception e) {
             System.out.println("No Milking Machine Installed");
         }
     }
 
-
     @Override
     public String toString() {
-        return "\n" + "herd=" + herd.toString() ;
+        return "\n" + "herd=" + herd.toString();
     }
 
 }
